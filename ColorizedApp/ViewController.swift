@@ -24,6 +24,8 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSliders()
+        setupSliderValueLabels()
+        setColorToView()
         
         colorizedView.layer.cornerRadius = 20
     }
@@ -31,25 +33,42 @@ final class ViewController: UIViewController {
     // MARK: - Actions
     @IBAction func redSliderAction() {
         redSliderValueLabel.text = roundSliderValue(redSlider).formatted()
+        setColorToView()
     }
     
     @IBAction func greenSliderAction() {
         greenSliderValueLabel.text = roundSliderValue(greenSlider).formatted()
+        setColorToView()
     }
     
     @IBAction func blueSliderAction() {
         blueSliderValueLabel.text = roundSliderValue(blueSlider).formatted()
+        setColorToView()
     }
     
     // MARK: - Utils
-    private func roundSliderValue(_ slider: UISlider) -> Float {
-        round(slider.value * 100) / 100.0
-    }
-    
     private func setUpSliders() {
         redSlider.minimumTrackTintColor = .systemRed
         greenSlider.minimumTrackTintColor = .systemGreen
         blueSlider.minimumTrackTintColor = .systemBlue
+    }
+    
+    private func setupSliderValueLabels() {
+        redSliderValueLabel.text = roundSliderValue(redSlider).formatted()
+        greenSliderValueLabel.text = roundSliderValue(greenSlider).formatted()
+        blueSliderValueLabel.text = roundSliderValue(blueSlider).formatted()
+    }
+    
+    private func roundSliderValue(_ slider: UISlider) -> Float {
+        round(slider.value * 100) / 100.0
+    }
+    
+    private func setColorToView() {
+        colorizedView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
+                                          green: CGFloat(greenSlider.value),
+                                          blue: CGFloat(blueSlider.value),
+                                          alpha: 1
+        )
     }
 }
 
