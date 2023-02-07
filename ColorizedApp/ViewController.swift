@@ -20,7 +20,6 @@ final class ViewController: UIViewController {
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSliders()
