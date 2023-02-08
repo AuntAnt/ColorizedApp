@@ -31,21 +31,21 @@ final class ViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func redSliderAction() {
-        redSliderValueLabel.text = getRoundedSliderValue(redSlider).formatted()
+        redSliderValueLabel.text = getRoundedSliderValue(redSlider)
         setColorToView()
     }
     
     @IBAction func greenSliderAction() {
-        greenSliderValueLabel.text = getRoundedSliderValue(greenSlider).formatted()
+        greenSliderValueLabel.text = getRoundedSliderValue(greenSlider)
         setColorToView()
     }
     
     @IBAction func blueSliderAction() {
-        blueSliderValueLabel.text = getRoundedSliderValue(blueSlider).formatted()
+        blueSliderValueLabel.text = getRoundedSliderValue(blueSlider)
         setColorToView()
     }
     
-    // MARK: - Utils
+    // MARK: - Private methods
     private func setUpSliders() {
         redSlider.minimumTrackTintColor = .systemRed
         greenSlider.minimumTrackTintColor = .systemGreen
@@ -53,13 +53,13 @@ final class ViewController: UIViewController {
     }
     
     private func setupSliderValueLabels() {
-        redSliderValueLabel.text = getRoundedSliderValue(redSlider).formatted()
-        greenSliderValueLabel.text = getRoundedSliderValue(greenSlider).formatted()
-        blueSliderValueLabel.text = getRoundedSliderValue(blueSlider).formatted()
+        redSliderValueLabel.text = getRoundedSliderValue(redSlider)
+        greenSliderValueLabel.text = getRoundedSliderValue(greenSlider)
+        blueSliderValueLabel.text = getRoundedSliderValue(blueSlider)
     }
     
-    private func getRoundedSliderValue(_ slider: UISlider) -> Float {
-        round(slider.value * 100) / 100
+    private func getRoundedSliderValue(_ slider: UISlider) -> String {
+        String(format: "%.2f", slider.value)
     }
     
     private func setColorToView() {
