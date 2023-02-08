@@ -9,9 +9,9 @@ import UIKit
 
 final class ViewController: UIViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet var colorizedView: UIView!
     
-    // MARK: - Labels
     @IBOutlet var redSliderValueLabel: UILabel!
     @IBOutlet var greenSliderValueLabel: UILabel!
     @IBOutlet var blueSliderValueLabel: UILabel!
@@ -64,9 +64,9 @@ final class ViewController: UIViewController {
     
     private func setColorToView() {
         colorizedView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
-                                          green: CGFloat(greenSlider.value),
-                                          blue: CGFloat(blueSlider.value),
-                                          alpha: 1
+                                                green: CGFloat(greenSlider.value),
+                                                blue: CGFloat(blueSlider.value),
+                                                alpha: 1
         )
     }
 }
