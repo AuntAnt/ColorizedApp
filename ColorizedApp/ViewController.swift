@@ -24,25 +24,21 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         setUpSliders()
         setupSliderValueToLabels(redSliderValueLabel, greenSliderValueLabel, blueSliderValueLabel)
-        setColorToView()
         
+        setColorToView()
         colorizedView.layer.cornerRadius = 20
     }
     
-    // MARK: - Actions
-    @IBAction func redSliderAction() {
-        redSliderValueLabel.text = getRoundedSliderValue(redSlider)
+    @IBAction func slidersAction(_ sender: UISlider) {
         setColorToView()
-    }
-    
-    @IBAction func greenSliderAction() {
-        greenSliderValueLabel.text = getRoundedSliderValue(greenSlider)
-        setColorToView()
-    }
-    
-    @IBAction func blueSliderAction() {
-        blueSliderValueLabel.text = getRoundedSliderValue(blueSlider)
-        setColorToView()
+        switch sender {
+        case redSlider:
+            redSliderValueLabel.text = getRoundedSliderValue(redSlider)
+        case greenSlider:
+            greenSliderValueLabel.text = getRoundedSliderValue(greenSlider)
+        default:
+            blueSliderValueLabel.text = getRoundedSliderValue(blueSlider)
+        }
     }
     
     // MARK: - Private methods
