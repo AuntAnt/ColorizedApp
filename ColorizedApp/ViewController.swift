@@ -23,7 +23,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSliders()
-        setupSliderValueLabels()
+        setupSliderValueToLabels(redSliderValueLabel, greenSliderValueLabel, blueSliderValueLabel)
         setColorToView()
         
         colorizedView.layer.cornerRadius = 20
@@ -52,10 +52,17 @@ final class ViewController: UIViewController {
         blueSlider.minimumTrackTintColor = .systemBlue
     }
     
-    private func setupSliderValueLabels() {
-        redSliderValueLabel.text = getRoundedSliderValue(redSlider)
-        greenSliderValueLabel.text = getRoundedSliderValue(greenSlider)
-        blueSliderValueLabel.text = getRoundedSliderValue(blueSlider)
+    private func setupSliderValueToLabels(_ labels: UILabel...) {
+        labels.forEach { label in
+            switch label {
+            case redSliderValueLabel:
+                redSliderValueLabel.text = getRoundedSliderValue(redSlider)
+            case greenSliderValueLabel:
+                greenSliderValueLabel.text = getRoundedSliderValue(greenSlider)
+            default:
+                blueSliderValueLabel.text = getRoundedSliderValue(blueSlider)
+            }
+        }
     }
     
     private func getRoundedSliderValue(_ slider: UISlider) -> String {
