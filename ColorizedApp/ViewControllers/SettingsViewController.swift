@@ -31,7 +31,6 @@ final class SettingsViewController: UIViewController {
         
         setColorToView()
         colorizedView.layer.cornerRadius = 20
-//        delegate =
     }
     
     @IBAction func slidersAction(_ sender: UISlider) {
