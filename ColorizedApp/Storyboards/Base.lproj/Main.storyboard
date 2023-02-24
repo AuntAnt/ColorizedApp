@@ -133,20 +133,20 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="zPg-Jh-1Xi" userLabel="Text Stack View">
                                         <rect key="frame" x="239" y="0.0" width="49" height="134"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h88-9H-YJ5">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h88-9H-YJ5">
                                                 <rect key="frame" x="0.0" y="0.0" width="49" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h8k-5U-S0M">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h8k-5U-S0M">
                                                 <rect key="frame" x="0.0" y="50" width="49" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MxM-No-RlL">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MxM-No-RlL">
                                                 <rect key="frame" x="0.0" y="100" width="49" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -156,7 +156,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVV-bO-sQY">
-                                <rect key="frame" x="128" y="436.5" width="64.5" height="34.5"/>
+                                <rect key="frame" x="128" y="466.5" width="64.5" height="34.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Done"/>
                                 <connections>
@@ -169,7 +169,7 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gDm-uI-UjN" secondAttribute="trailing" constant="16" id="7Dd-lR-d4D"/>
                             <constraint firstItem="ozo-p7-E0m" firstAttribute="top" secondItem="gDm-uI-UjN" secondAttribute="bottom" constant="50" id="949-UY-Io8"/>
-                            <constraint firstItem="dVV-bO-sQY" firstAttribute="top" secondItem="ozo-p7-E0m" secondAttribute="bottom" constant="100" id="Aq4-WM-eHF"/>
+                            <constraint firstItem="dVV-bO-sQY" firstAttribute="top" secondItem="ozo-p7-E0m" secondAttribute="bottom" constant="130" id="Aq4-WM-eHF"/>
                             <constraint firstItem="ozo-p7-E0m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Czz-Oj-7lF"/>
                             <constraint firstItem="gDm-uI-UjN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="EHX-Zi-G7S"/>
                             <constraint firstItem="gDm-uI-UjN" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.198357" id="Swv-tv-7dd"/>
@@ -182,11 +182,14 @@
                     <connections>
                         <outlet property="blueSlider" destination="5Po-J0-NII" id="Q5I-1d-Tfp"/>
                         <outlet property="blueSliderValueLabel" destination="nDj-v2-Vv6" id="ppW-rN-Pq8"/>
+                        <outlet property="blueValueTF" destination="MxM-No-RlL" id="90r-ek-RFM"/>
                         <outlet property="colorizedView" destination="gDm-uI-UjN" id="8zr-Gx-xyc"/>
                         <outlet property="greenSlider" destination="IQ5-x3-nEh" id="Iyv-LI-Cg0"/>
                         <outlet property="greenSliderValueLabel" destination="uUZ-gJ-wCa" id="zt7-at-HGY"/>
+                        <outlet property="greenValueTF" destination="h8k-5U-S0M" id="Kn1-Da-QC2"/>
                         <outlet property="redSlider" destination="rDU-J6-ec6" id="C6V-Qo-7ZP"/>
                         <outlet property="redSliderValueLabel" destination="rDP-Pt-iBn" id="S3f-ty-Son"/>
+                        <outlet property="redValueTF" destination="h88-9H-YJ5" id="Cn8-7F-ccF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

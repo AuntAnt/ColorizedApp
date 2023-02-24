@@ -20,6 +20,10 @@ final class SettingsViewController: UIViewController {
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
     
+    @IBOutlet var redValueTF: UITextField!
+    @IBOutlet var greenValueTF: UITextField!
+    @IBOutlet var blueValueTF: UITextField!
+    
     var color: UIColor!
     unowned var delegate: SettingViewControllerDelegate!
     
@@ -27,22 +31,40 @@ final class SettingsViewController: UIViewController {
         super.viewDidLoad()
         setUpSliders()
         setSliderValues()
-        setSliderValueToLabels(redSliderValueLabel, greenSliderValueLabel, blueSliderValueLabel)
+        setSliderValueToOutlets(redSliderValueLabel, greenSliderValueLabel, blueSliderValueLabel)
+        
+        setDoneToolbarButton(redValueTF, greenValueTF, blueValueTF)
         
         setColorToView()
         colorizedView.layer.cornerRadius = 20
+        
+        redValueTF.delegate = self
+        greenValueTF.delegate = self
+        blueValueTF.delegate = self
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    // MARK: - IB Actions
     @IBAction func slidersAction(_ sender: UISlider) {
         setColorToView()
         switch sender {
         case redSlider:
-            redSliderValueLabel.text = getRoundedSliderValue(redSlider)
+            setValue(of: sender, to: redSliderValueLabel, and: redValueTF)
         case greenSlider:
-            greenSliderValueLabel.text = getRoundedSliderValue(greenSlider)
+            setValue(of: sender, to: greenSliderValueLabel, and: greenValueTF)
         default:
-            blueSliderValueLabel.text = getRoundedSliderValue(blueSlider)
+            setValue(of: sender, to: blueSliderValueLabel, and: blueValueTF)
         }
+    }
+    
+    @IBAction func doneButtonPressed() {
+        guard let color = colorizedView.backgroundColor else { return }
+        delegate.setColor(color)
+        dismiss(animated: true)
     }
     
     // MARK: - Private methods
@@ -58,15 +80,15 @@ final class SettingsViewController: UIViewController {
         blueSlider.value = Float(color.rgb.blue)
     }
     
-    private func setSliderValueToLabels(_ labels: UILabel...) {
+    private func setSliderValueToOutlets(_ labels: UILabel...) {
         labels.forEach { label in
             switch label {
             case redSliderValueLabel:
-                redSliderValueLabel.text = getRoundedSliderValue(redSlider)
+                setValue(of: redSlider, to: redSliderValueLabel, and: redValueTF)
             case greenSliderValueLabel:
-                greenSliderValueLabel.text = getRoundedSliderValue(greenSlider)
+                setValue(of: greenSlider, to: greenSliderValueLabel, and: greenValueTF)
             default:
-                blueSliderValueLabel.text = getRoundedSliderValue(blueSlider)
+                setValue(of: blueSlider, to: blueSliderValueLabel, and: blueValueTF)
             }
         }
     }
@@ -75,18 +97,24 @@ final class SettingsViewController: UIViewController {
         String(format: "%.2f", slider.value)
     }
     
-    private func setColorToView() {
-        colorizedView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
-                                                green: CGFloat(greenSlider.value),
-                                                blue: CGFloat(blueSlider.value),
-                                                alpha: 1
-        )
+    private func setValue(of slider: UISlider, to label: UILabel, and textField: UITextField) {
+        let value = getRoundedSliderValue(slider)
+        label.text = value
+        textField.text = value
     }
     
-    // MARK: - IB Actions
-    @IBAction func doneButtonPressed() {
-        guard let color = colorizedView.backgroundColor else { return }
-        delegate.setColor(color)
-        dismiss(animated: true)
+    private func setDoneToolbarButton(_ textField: UITextField...) {
+        let bar = UIToolbar()
+        let leftSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let reset = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        
+        bar.items = [leftSpace, reset]
+        bar.sizeToFit()
+        
+        textField.forEach { $0.inputAccessoryView = bar }
+    }
+    
+    @objc private func doneButtonTapped() {
+        view.endEditing(true)
     }
 }

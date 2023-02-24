@@ -15,6 +15,7 @@
 		9BB8512E29917A9B00FDAAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB8512D29917A9B00FDAAE7 /* Assets.xcassets */; };
 		9BB8513129917A9B00FDAAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB8512F29917A9B00FDAAE7 /* LaunchScreen.storyboard */; };
 		9BF78A6329A8F4900094EF17 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF78A6229A8F48F0094EF17 /* UIColorExtensions.swift */; };
+		9BF78A6529A9342E0094EF17 /* SettingsViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF78A6429A9342E0094EF17 /* SettingsViewControllerExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		9BB8513029917A9B00FDAAE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9BB8513229917A9B00FDAAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BF78A6229A8F48F0094EF17 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		9BF78A6429A9342E0094EF17 /* SettingsViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +90,8 @@
 		9BB8512329917A9A00FDAAE7 /* ColorizedApp */ = {
 			isa = PBXGroup;
 			children = (
-				9BF78A6129A8F45B0094EF17 /* Extensions */,
 				9B11AFEA29A8D1EF006525AA /* ViewControllers */,
+				9BF78A6129A8F45B0094EF17 /* Extensions */,
 				9B11AFE929A8D1D3006525AA /* Storyboards */,
 				9B11AFE829A8D174006525AA /* App */,
 				9BB8512D29917A9B00FDAAE7 /* Assets.xcassets */,
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				9BF78A6229A8F48F0094EF17 /* UIColorExtensions.swift */,
+				9BF78A6429A9342E0094EF17 /* SettingsViewControllerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				9BB8512729917A9A00FDAAE7 /* SceneDelegate.swift in Sources */,
 				9B11AFEC29A8D91E006525AA /* MainViewController.swift in Sources */,
 				9BF78A6329A8F4900094EF17 /* UIColorExtensions.swift in Sources */,
+				9BF78A6529A9342E0094EF17 /* SettingsViewControllerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
