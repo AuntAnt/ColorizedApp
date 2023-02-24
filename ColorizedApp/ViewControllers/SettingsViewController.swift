@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class SettingsViewController: UIViewController {
 
     // MARK: - IBOutlets
     @IBOutlet var colorizedView: UIView!
@@ -20,13 +20,18 @@ final class ViewController: UIViewController {
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
     
+    var color: UIColor!
+    unowned var delegate: SettingViewControllerDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSliders()
-        setupSliderValueToLabels(redSliderValueLabel, greenSliderValueLabel, blueSliderValueLabel)
+        setSliderValues()
+        setSliderValueToLabels(redSliderValueLabel, greenSliderValueLabel, blueSliderValueLabel)
         
         setColorToView()
         colorizedView.layer.cornerRadius = 20
+//        delegate =
     }
     
     @IBAction func slidersAction(_ sender: UISlider) {
@@ -48,7 +53,13 @@ final class ViewController: UIViewController {
         blueSlider.minimumTrackTintColor = .systemBlue
     }
     
-    private func setupSliderValueToLabels(_ labels: UILabel...) {
+    private func setSliderValues() {
+        redSlider.value = Float(color.rgb.red)
+        greenSlider.value = Float(color.rgb.green)
+        blueSlider.value = Float(color.rgb.blue)
+    }
+    
+    private func setSliderValueToLabels(_ labels: UILabel...) {
         labels.forEach { label in
             switch label {
             case redSliderValueLabel:
@@ -72,5 +83,11 @@ final class ViewController: UIViewController {
                                                 alpha: 1
         )
     }
+    
+    // MARK: - IB Actions
+    @IBAction func doneButtonPressed() {
+        guard let color = colorizedView.backgroundColor else { return }
+        delegate.setColor(color)
+        dismiss(animated: true)
+    }
 }
-
