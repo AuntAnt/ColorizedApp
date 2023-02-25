@@ -87,29 +87,29 @@ final class SettingsViewController: UIViewController {
     }
     
     private func setValue(of slider: UISlider, to label: UILabel, and textField: UITextField) {
-        let value = roundValue(slider.value)
+        let value = DataHelper.roundValue(slider.value)
         label.text = value
         textField.text = value
     }
     
     private func setDoneToolbarButton(_ textField: UITextField...) {
-        let bar = UIToolbar()
+        let toolBar = UIToolbar()
         let leftSpace = UIBarButtonItem(
             barButtonSystemItem: .flexibleSpace,
             target: nil,
             action: nil
         )
         
-        let done = UIBarButtonItem(
+        let doneButton = UIBarButtonItem(
             barButtonSystemItem: .done,
             target: self,
             action: #selector(doneToolbarButtonPressed)
         )
         
-        bar.items = [leftSpace, done]
-        bar.sizeToFit()
+        toolBar.items = [leftSpace, doneButton]
+        toolBar.sizeToFit()
         
-        textField.forEach { $0.inputAccessoryView = bar }
+        textField.forEach { $0.inputAccessoryView = toolBar }
     }
     
     @objc private func doneToolbarButtonPressed() {

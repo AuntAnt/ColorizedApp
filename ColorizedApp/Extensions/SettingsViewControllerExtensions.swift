@@ -59,39 +59,24 @@ extension SettingsViewController {
     /// Refreshing slider, slider value labels and colorized view after input new values to text fields
     func refreshColorState(_ textField: UITextField) {
         if let textValue = textField.text, let numericValue = Float(textValue) {
-            let value = normalizeValue(number: numericValue)
+            let value = DataHelper.normalizeValue(number: numericValue)
             switch textField {
             case redValueTF:
                 redSlider.setValue(value, animated: true)
-                redSliderValueLabel.text = roundValue(value)
-                textField.text = roundValue(value)
+                redSliderValueLabel.text = DataHelper.roundValue(value)
+                textField.text = DataHelper.roundValue(value)
             case greenValueTF:
                 greenSlider.setValue(value, animated: true)
-                greenSliderValueLabel.text = roundValue(value)
-                textField.text = roundValue(value)
+                greenSliderValueLabel.text = DataHelper.roundValue(value)
+                textField.text = DataHelper.roundValue(value)
             default:
                 blueSlider.setValue(value, animated: true)
-                blueSliderValueLabel.text = roundValue(value)
-                textField.text = roundValue(value)
+                blueSliderValueLabel.text = DataHelper.roundValue(value)
+                textField.text = DataHelper.roundValue(value)
             }
             setColorToView()
         } else {
             showAlert("Error!", "Wrong number format", textField)
         }
-    }
-    
-    /// Normalize text field value if entered value is not in range 0...1
-    private func normalizeValue(number: Float) -> Float {
-        if number > 1 {
-            return Float(1)
-        } else if number < 0 {
-            return Float(0)
-        } else {
-            return number
-        }
-    }
-    
-    func roundValue(_ value: Float) -> String {
-        String(format: "%.2f", value)
     }
 }

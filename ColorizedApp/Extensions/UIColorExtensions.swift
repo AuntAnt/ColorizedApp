@@ -15,7 +15,7 @@ extension UIColor {
         var blue: CGFloat = 0
         var alpha: CGFloat = 1
         
-        // СGFloat is a structure, so & - mean inout and params will be changed
+        // СGFloat is a structure, so '&' - mean inout and params will be changed
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         
         return (red, green, blue)

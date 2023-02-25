@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9B11AFEC29A8D91E006525AA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B11AFEB29A8D91E006525AA /* MainViewController.swift */; };
+		9B7E5CC729A9ECC000523D6F /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E5CC629A9ECC000523D6F /* DataHelper.swift */; };
 		9BB8512529917A9A00FDAAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB8512429917A9A00FDAAE7 /* AppDelegate.swift */; };
 		9BB8512729917A9A00FDAAE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB8512629917A9A00FDAAE7 /* SceneDelegate.swift */; };
 		9BB8512929917A9A00FDAAE7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB8512829917A9A00FDAAE7 /* SettingsViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		9B11AFEB29A8D91E006525AA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9B7E5CC629A9ECC000523D6F /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		9BB8512129917A9A00FDAAE7 /* ColorizedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorizedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB8512429917A9A00FDAAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BB8512629917A9A00FDAAE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		9B7E5CC829A9EDB100523D6F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9B7E5CC629A9ECC000523D6F /* DataHelper.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		9BB8511829917A9A00FDAAE7 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +102,7 @@
 			children = (
 				9B11AFEA29A8D1EF006525AA /* ViewControllers */,
 				9BF78A6129A8F45B0094EF17 /* Extensions */,
+				9B7E5CC829A9EDB100523D6F /* Utils */,
 				9B11AFE929A8D1D3006525AA /* Storyboards */,
 				9B11AFE829A8D174006525AA /* App */,
 				9BB8512D29917A9B00FDAAE7 /* Assets.xcassets */,
@@ -182,6 +193,7 @@
 				9BB8512929917A9A00FDAAE7 /* SettingsViewController.swift in Sources */,
 				9BB8512529917A9A00FDAAE7 /* AppDelegate.swift in Sources */,
 				9BB8512729917A9A00FDAAE7 /* SceneDelegate.swift in Sources */,
+				9B7E5CC729A9ECC000523D6F /* DataHelper.swift in Sources */,
 				9B11AFEC29A8D91E006525AA /* MainViewController.swift in Sources */,
 				9BF78A6329A8F4900094EF17 /* UIColorExtensions.swift in Sources */,
 				9BF78A6529A9342E0094EF17 /* SettingsViewControllerExtensions.swift in Sources */,
