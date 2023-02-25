@@ -44,6 +44,18 @@ extension SettingsViewController {
         )
     }
     
+    func setSlidersColor() {
+        redSlider.minimumTrackTintColor = .systemRed
+        greenSlider.minimumTrackTintColor = .systemGreen
+        blueSlider.minimumTrackTintColor = .systemBlue
+    }
+    
+    func setSlidersValue() {
+        redSlider.value = Float(color.rgb.red)
+        greenSlider.value = Float(color.rgb.green)
+        blueSlider.value = Float(color.rgb.blue)
+    }
+    
     /// Refreshing slider, slider value labels and colorized view after input new values to text fields
     func refreshColorState(_ textField: UITextField) {
         if let textValue = textField.text, let numericValue = Float(textValue) {
@@ -79,7 +91,7 @@ extension SettingsViewController {
         }
     }
     
-    private func roundValue(_ value: Float) -> String {
+    func roundValue(_ value: Float) -> String {
         String(format: "%.2f", value)
     }
 }

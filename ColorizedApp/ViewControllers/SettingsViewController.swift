@@ -29,9 +29,14 @@ final class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpSliders()
-        setSliderValues()
-        setSliderValueToOutlets(redSliderValueLabel, greenSliderValueLabel, blueSliderValueLabel)
+        setSlidersColor()
+        setSlidersValue()
+        
+        setSliderValueToOutlets(
+            redSliderValueLabel,
+            greenSliderValueLabel,
+            blueSliderValueLabel
+        )
         
         setDoneToolbarButton(redValueTF, greenValueTF, blueValueTF)
         
@@ -68,18 +73,6 @@ final class SettingsViewController: UIViewController {
     }
     
     // MARK: - Private methods
-    private func setUpSliders() {
-        redSlider.minimumTrackTintColor = .systemRed
-        greenSlider.minimumTrackTintColor = .systemGreen
-        blueSlider.minimumTrackTintColor = .systemBlue
-    }
-    
-    private func setSliderValues() {
-        redSlider.value = Float(color.rgb.red)
-        greenSlider.value = Float(color.rgb.green)
-        blueSlider.value = Float(color.rgb.blue)
-    }
-    
     private func setSliderValueToOutlets(_ labels: UILabel...) {
         labels.forEach { label in
             switch label {
@@ -93,28 +86,33 @@ final class SettingsViewController: UIViewController {
         }
     }
     
-    private func getRoundedSliderValue(_ slider: UISlider) -> String {
-        String(format: "%.2f", slider.value)
-    }
-    
     private func setValue(of slider: UISlider, to label: UILabel, and textField: UITextField) {
-        let value = getRoundedSliderValue(slider)
+        let value = roundValue(slider.value)
         label.text = value
         textField.text = value
     }
     
     private func setDoneToolbarButton(_ textField: UITextField...) {
         let bar = UIToolbar()
-        let leftSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let reset = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        let leftSpace = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
         
-        bar.items = [leftSpace, reset]
+        let done = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(doneToolbarButtonPressed)
+        )
+        
+        bar.items = [leftSpace, done]
         bar.sizeToFit()
         
         textField.forEach { $0.inputAccessoryView = bar }
     }
     
-    @objc private func doneButtonTapped() {
+    @objc private func doneToolbarButtonPressed() {
         view.endEditing(true)
     }
 }
