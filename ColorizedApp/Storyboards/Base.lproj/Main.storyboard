@@ -29,7 +29,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0Nb-yM-tGo"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
                         <constraints>
                             <constraint firstItem="0Nb-yM-tGo" firstAttribute="trailing" secondItem="QzV-9v-Iwf" secondAttribute="trailing" constant="30" id="Ggw-9W-uXg"/>
                             <constraint firstItem="QzV-9v-Iwf" firstAttribute="top" secondItem="0Nb-yM-tGo" secondAttribute="top" constant="30" id="ifG-bE-4Tq"/>
@@ -204,6 +204,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

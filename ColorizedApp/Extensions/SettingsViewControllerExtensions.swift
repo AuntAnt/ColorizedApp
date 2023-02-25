@@ -47,20 +47,39 @@ extension SettingsViewController {
     /// Refreshing slider, slider value labels and colorized view after input new values to text fields
     func refreshColorState(_ textField: UITextField) {
         if let textValue = textField.text, let numericValue = Float(textValue) {
+            let value = normalizeValue(number: numericValue)
             switch textField {
             case redValueTF:
-                redSlider.setValue(numericValue, animated: true)
-                redSliderValueLabel.text = textValue
+                redSlider.setValue(value, animated: true)
+                redSliderValueLabel.text = roundValue(value)
+                textField.text = roundValue(value)
             case greenValueTF:
-                greenSlider.setValue(numericValue, animated: true)
-                greenSliderValueLabel.text = textValue
+                greenSlider.setValue(value, animated: true)
+                greenSliderValueLabel.text = roundValue(value)
+                textField.text = roundValue(value)
             default:
-                blueSlider.setValue(numericValue, animated: true)
-                blueSliderValueLabel.text = textValue
+                blueSlider.setValue(value, animated: true)
+                blueSliderValueLabel.text = roundValue(value)
+                textField.text = roundValue(value)
             }
             setColorToView()
         } else {
             showAlert("Error!", "Wrong number format", textField)
         }
+    }
+    
+    /// Normalize text field value if entered value is not in range 0...1
+    private func normalizeValue(number: Float) -> Float {
+        if number > 1 {
+            return Float(1)
+        } else if number < 0 {
+            return Float(0)
+        } else {
+            return number
+        }
+    }
+    
+    private func roundValue(_ value: Float) -> String {
+        String(format: "%.2f", value)
     }
 }
