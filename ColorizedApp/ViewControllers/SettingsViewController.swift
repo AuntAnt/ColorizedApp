@@ -38,8 +38,6 @@ final class SettingsViewController: UIViewController {
             blueSliderValueLabel
         )
         
-        setDoneToolbarButton(redValueTF, greenValueTF, blueValueTF)
-        
         setColorToView()
         colorizedView.layer.cornerRadius = 20
         
@@ -55,7 +53,6 @@ final class SettingsViewController: UIViewController {
     
     // MARK: - IB Actions
     @IBAction func slidersAction(_ sender: UISlider) {
-        setColorToView()
         switch sender {
         case redSlider:
             setValue(of: sender, to: redSliderValueLabel, and: redValueTF)
@@ -64,11 +61,11 @@ final class SettingsViewController: UIViewController {
         default:
             setValue(of: sender, to: blueSliderValueLabel, and: blueValueTF)
         }
+        setColorToView()
     }
     
     @IBAction func doneButtonPressed() {
-        guard let color = colorizedView.backgroundColor else { return }
-        delegate.setColor(color)
+        delegate.setColor(colorizedView.backgroundColor ?? .clear)
         dismiss(animated: true)
     }
     
@@ -90,30 +87,6 @@ final class SettingsViewController: UIViewController {
         let value = roundValue(slider.value)
         label.text = value
         textField.text = value
-    }
-    
-    private func setDoneToolbarButton(_ textField: UITextField...) {
-        let toolBar = UIToolbar()
-        let leftSpace = UIBarButtonItem(
-            barButtonSystemItem: .flexibleSpace,
-            target: nil,
-            action: nil
-        )
-        
-        let doneButton = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: self,
-            action: #selector(doneToolbarButtonPressed)
-        )
-        
-        toolBar.items = [leftSpace, doneButton]
-        toolBar.sizeToFit()
-        
-        textField.forEach { $0.inputAccessoryView = toolBar }
-    }
-    
-    @objc private func doneToolbarButtonPressed() {
-        view.endEditing(true)
     }
     
     /// Normalize text field value if entered value is not in range 0...1
@@ -144,6 +117,7 @@ extension SettingsViewController {
         
         let okAction = UIAlertAction(title: "OK", style: .default) {_ in
             textField.text = "1.00"
+            textField.becomeFirstResponder()
             self.refreshColorState(textField)
         }
         
@@ -153,7 +127,28 @@ extension SettingsViewController {
 }
 
 // MARK: - Text field delegate extension
-extension SettingsViewController: UITextFieldDelegate{
+extension SettingsViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let toolBar = UIToolbar()
+        
+        let leftSpace = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: textField,
+            action: #selector(resignFirstResponder)
+        )
+        
+        toolBar.items = [leftSpace, doneButton]
+        toolBar.sizeToFit()
+        
+        textField.inputAccessoryView = toolBar
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         refreshColorState(textField)
     }
